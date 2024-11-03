@@ -192,7 +192,7 @@ function UploadPageForm({ setActivePage }: UploadPageFormProps) {
           <SelectTrigger>
             <SelectValue placeholder="select folder"></SelectValue>
           </SelectTrigger>
-          <SelectContent>
+          <SelectContent className="max-h-48">
             {folderList && folderList.map(folder => (
               <SelectItem key={folder.id} value={folder.id.toString()}>
                 {folder.name}
