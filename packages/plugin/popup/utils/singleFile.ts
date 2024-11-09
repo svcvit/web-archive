@@ -17,6 +17,8 @@ export function getSingleFileSetting() {
       removeAlternativeMedias: true,
       removeAlternativeImages: true,
       groupDuplicateImages: true,
+      loadDeferredImagesMaxIdleTime: 1500,
+      loadDeferredImages: true,
     }
   }
   return JSON.parse(setting) as SingleFileSetting

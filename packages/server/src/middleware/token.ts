@@ -2,6 +2,10 @@ import type { Context, Next } from 'hono'
 import { verifyAdminToken } from '~/model/store'
 
 async function tokenMiddleware(c: Context, next: Next) {
+  if (c.req.path === '/api/pages/screenshot') {
+    return await next()
+  }
+
   const authHeader = c.req.header('Authorization')
 
   if (!authHeader || !authHeader.startsWith('Bearer ')) {

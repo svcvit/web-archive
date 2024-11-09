@@ -5,8 +5,8 @@ on:
     branches:
       - main
       - hotfix
-      - chunk
-      - search
+      - preview
+      - read_mode
 
 jobs:
   deploy:

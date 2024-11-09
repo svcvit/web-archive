@@ -34,6 +34,8 @@ export interface SingleFileSetting {
   removeAlternativeMedias: boolean
   removeAlternativeImages: boolean
   groupDuplicateImages: boolean
+  loadDeferredImages?: boolean
+  loadDeferredImagesMaxIdleTime?: number
   onprogress?: (data: ProgressData) => void
 }
 
@@ -62,6 +64,8 @@ export async function getCurrentPageData(singleFileSetting?: SingleFileSetting) 
     removeAlternativeMedias: true,
     removeAlternativeImages: true,
     groupDuplicateImages: true,
+    loadDeferredImages: true,
+    loadDeferredImagesMaxIdleTime: 1500,
     ...(singleFileSetting ?? {}),
   })
 

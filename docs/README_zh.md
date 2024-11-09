@@ -95,7 +95,7 @@ database_id = "xxxx-xxxx-xxxx-xxxx-xxxx"
 
 然后执行初始化 sql:
 ```bash
-npx wrangler d1 execute web-archive --remote --file=./init.sql
+npx wrangler d1 migrations apply web-archive --remote
 ```
 
 成功输出：
@@ -116,10 +116,8 @@ Note: if the execution fails to complete, your DB will return to its original st
 │ 9                      │ 13        │ 13           │ 0.04               │
 └────────────────────────┴───────────┴──────────────┴────────────────────┘
 ```
-### 4. 修改 BEARER_TOKEN
-BEARER_TOKEN 是访问 web-archive 的凭证，相当于密码，修改 `wrangler.toml` 文件中 `BEARER_TOKEN` 的值。
 
-### 5. 部署服务
+### 4. 部署服务
 ```bash
 # 部署服务
 npx wrangler pages deploy

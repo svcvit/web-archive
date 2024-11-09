@@ -101,7 +101,7 @@ Copy the last line of the output, and replace the `database_id` value in the `wr
 
 Then execute the initialization sql:
 ```bash
-npx wrangler d1 execute web-archive --remote --file=./init.sql
+npx wrangler d1 migrations apply web-archive --remote
 ```
 
 Output:
@@ -123,10 +123,7 @@ Note: if the execution fails to complete, your DB will return to its original st
 └────────────────────────┴───────────┴──────────────┴────────────────────┘
 ```
 
-### 4. Update BEARER_TOKEN
-BEARER_TOKEN is the credential for accessing the web-archive, equivalent to a password, modify the value of `BEARER_TOKEN` in the `wrangler.toml` file.
-
-### 5. Deploy
+### 4. Deploy
 ```bash
 npx wrangler pages deploy
 ```

@@ -2,13 +2,14 @@ import { ArrowLeft } from 'lucide-react'
 import { useState } from 'react'
 import { Checkbox } from '@web-archive/shared/components/checkbox'
 import { Label } from '@web-archive/shared/components/label'
+import { Input } from '@web-archive/shared/components/input'
 import { getSingleFileSetting, setSingleFileSetting } from '../utils/singleFile'
 import type { PageType } from '~/popup/PopupPage'
 import type { SingleFileSetting } from '~/utils/singleFile'
 
 function SettingPage({ setActivePage }: { setActivePage: (tab: PageType) => void }) {
   return (
-    <div className="w-64 space-y-1.5 p-4">
+    <div className="w-80 space-y-2 p-4">
       <div className="h-6 mb-2 items-center flex space-x-3">
         <ArrowLeft
           className="cursor-pointer"
@@ -129,6 +130,31 @@ function SingleFileSettings() {
           label="Group Duplicate Images"
         >
         </SettingCheckBox>
+        <SettingCheckBox
+          id="loadDeferredImages"
+          checked={settings.loadDeferredImages ?? true}
+          onCheckedChange={checked => handleChange(checked, 'loadDeferredImages')}
+          label="Load Deferred Images"
+        >
+        </SettingCheckBox>
+        <div className="space-y-2">
+          <Label>Load Deferrred Images Max Idle Time</Label>
+          <Input
+            type="number"
+            value={settings.loadDeferredImagesMaxIdleTime ?? 1500}
+            onChange={(e) => {
+              const value = e.target.value
+              setSettings((prev) => {
+                const newSettings = {
+                  ...prev,
+                  loadDeferredImagesMaxIdleTime: Number.parseInt(value),
+                }
+                setSingleFileSetting(newSettings)
+                return newSettings
+              })
+            }}
+          />
+        </div>
       </div>
     </div>
   )
